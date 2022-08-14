@@ -37,14 +37,19 @@ def get_options():
             )
     options = parser.parse_args()
     # input folder, output folder, file of ids, file of acronyms
-    print(options)
+    #print(options)
     return options
 
 
 def get_filelist(input_folder):
     """ Recursively create list of all files with paths """
-
-    # print(filelist)
+    
+    filelist = []
+    for root, dirs, files in os.walk(input_folder):
+        for file in files:
+	        filelist.append(os.path.join(root,file))
+    
+    #print(filelist)
     return filelist
 
 
