@@ -53,9 +53,16 @@ def get_filelist(input_folder):
     return filelist
 
 
-def read_csv():
+def read_csv(path):
     """ Reads a file and returns its contents as a list """
-    # print(read_data)
+    
+    read_data = []
+    with open(path,'rt') as csvfile:
+        reader = csv.reader(csvfile, dialect='excel')
+        for row in reader:
+            read_data.append(row[0]) 
+       
+    print(read_data)
     return read_data
 
 
@@ -89,7 +96,7 @@ def main():
 
     options = get_options()
     all_files = get_filelist(options.input)
-    # ids = read_csv(options.ids)
+    ids = read_csv(options.ids)
     # acronyms = read_csv(options.acronyms)
     # filtered_files = filter_filelist(
     #    all_files,
