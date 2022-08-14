@@ -74,7 +74,6 @@ def filter_filelist(all_files, ids, acronyms):
         if file_matches(f, ids, acronyms):
             filtered.append(f)
             return filtered
-    print(filtered)
     return filtered
 
 
@@ -87,7 +86,7 @@ def file_matches(fname, ids, acronyms):
         return False
     id_matches = parsed["id"] in ids
     acronym_matches = parsed["acronym"] in acronyms
-    print(fname, id_matches, acronym_matches)
+    print(f"'{fname}' id:{str(id_matches)[0]} acr:{str(acronym_matches)[0]}")
     return id_matches and acronym_matches
 
 
