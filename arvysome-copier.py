@@ -43,25 +43,25 @@ def get_options():
 
 def get_filelist(input_folder):
     """ Recursively create list of all files with paths """
-    
+
     filelist = []
     for root, dirs, files in os.walk(input_folder):
         for file in files:
 	        filelist.append(os.path.join(root,file))
-    
+
     #print(filelist)
     return filelist
 
 
 def read_csv(path):
     """ Reads a file and returns its contents as a list """
-    
+
     read_data = []
     with open(path,'rt') as csvfile:
         reader = csv.reader(csvfile, dialect='excel')
         for row in reader:
-            read_data.append(row[0]) 
-       
+            read_data.append(row[0])
+
     #print(read_data)
     return read_data
 
@@ -73,6 +73,7 @@ def filter_filelist(all_files, ids, acronyms):
     for f in all_files:
         if file_matches(f, ids, acronyms):
             filtered.append(f)
+            return filtered
     print(filtered)
     return filtered
 
@@ -98,11 +99,11 @@ def main():
     all_files = get_filelist(options.input)
     ids = read_csv(options.ids)
     acronyms = read_csv(options.acronyms)
-    # filtered_files = filter_filelist(
-    #    all_files,
-    #    ids,
-    #    acronyms
-    # )
+    filtered_files = filter_filelist(
+        all_files,
+        ids,
+        acronyms
+    )
     # copy_files(
     #    filtered_files,
     #    options.output
