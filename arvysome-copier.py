@@ -15,25 +15,25 @@ def get_options():
                "--input",
                 action="store",
                 help="Path to input data",
-                required = True               
+                required = True
             )
     parser.add_argument(
                "--output",
                 action="store",
                 help="Path to output data",
-                required = True               
+                required = True
             )
     parser.add_argument(
                "--ids",
                 action="store",
                 help="file name with IDs",
-                required = True               
+                required = True
             )
     parser.add_argument(
                "--acronyms",
                 action="store",
                 help= "file name with acronyms",
-                required = True               
+                required = True
             )
     options = parser.parse_args()
     # input folder, output folder, file of ids, file of acronyms
@@ -45,13 +45,13 @@ def get_filelist(input_folder):
     """ Recursively create list of all files with paths """
 
     # print(filelist)
-    pass
+    return filelist
 
 
 def read_csv():
     """ Reads a file and returns its contents as a list """
     # print(read_data)
-    pass
+    return read_data
 
 
 def filter_filelist(all_files, ids, acronyms):
@@ -83,7 +83,7 @@ def main():
     """ Performs all the steps """
 
     options = get_options()
-    # all_files = get_filelist(options.input)
+    all_files = get_filelist(options.input)
     # ids = read_csv(options.ids)
     # acronyms = read_csv(options.acronyms)
     # filtered_files = filter_filelist(
