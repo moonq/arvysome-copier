@@ -62,7 +62,7 @@ def read_csv(path):
         for row in reader:
             read_data.append(row[0]) 
        
-    print(read_data)
+    #print(read_data)
     return read_data
 
 
