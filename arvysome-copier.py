@@ -10,7 +10,32 @@ import argparse
 
 def get_options():
     """ Reads user options, and returns as object """
-
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+               "--input",
+                action="store",
+                help="Path to input data",
+                required = True               
+            )
+    parser.add_argument(
+               "--output",
+                action="store",
+                help="Path to output data",
+                required = True               
+            )
+    parser.add_argument(
+               "--ids",
+                action="store",
+                help="file name with IDs",
+                required = True               
+            )
+    parser.add_argument(
+               "--acronyms",
+                action="store",
+                help= "file name with acronyms",
+                required = True               
+            )
+    options = parser.parse_args()
     # input folder, output folder, file of ids, file of acronyms
     print(options)
     return options
