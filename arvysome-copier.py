@@ -80,8 +80,15 @@ def filter_filelist(all_files, ids, acronyms):
 
 def file_matches(fname, ids, acronyms):
     """ Return True if file parses to predefined format, and matches found in IDs and acronyms """
-    parsed = parse.parse("parsing-format", os.path.basename(fname))
-    return parsed["id"] in ids and parsed["acronym"] in acronyms
+    parsed = parse.parse("{id}_{acronym} {the_rest}", os.path.basename(fname))
+    if not parsed:
+        # file name does not match our parsing format!
+        print("Not parsed! {}".format(fname))
+        return False
+    id_matches = parsed["id"] in ids
+    acronym_matches = parsed["acronym"] in acronyms
+    print(fname, id_matches, acronym_matches)
+    return id_matches and acronym_matches
 
 
 def copy_files(filtered_files, output_folder):
