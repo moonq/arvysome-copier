@@ -91,12 +91,17 @@ def file_matches(fname, ids, acronyms):
 
 def copy_files(filtered_files, output_folder):
     """ Copy list of files to a folder """
+
     if not os.path.exists(output_folder):
         os.mkdir(output_folder)
+ 
+    for input_file in filtered_files:
+        output_file = os.path.join(output_folder, os.path.basename(input_file))
+        shutil.copy2(input_file,output_file)
+        print(".", end="")
+    print("")
 
-    pass
-
-
+                     
 def main():
     """ Performs all the steps """
 
@@ -109,10 +114,10 @@ def main():
         ids,
         acronyms
     )
-    # copy_files(
-    #    filtered_files,
-    #    options.output
-    # )
+    copy_files(
+        filtered_files,
+        options.output
+    )
 
 
 if __name__ == "__main__":
