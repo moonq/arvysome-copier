@@ -73,7 +73,6 @@ def filter_filelist(all_files, ids, acronyms):
     for f in all_files:
         if file_matches(f, ids, acronyms):
             filtered.append(f)
-            return filtered
     return filtered
 
 
