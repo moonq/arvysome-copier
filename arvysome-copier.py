@@ -97,7 +97,7 @@ def main():
     options = get_options()
     all_files = get_filelist(options.input)
     ids = read_csv(options.ids)
-    # acronyms = read_csv(options.acronyms)
+    acronyms = read_csv(options.acronyms)
     # filtered_files = filter_filelist(
     #    all_files,
     #    ids,
